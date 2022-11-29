@@ -13,12 +13,15 @@ type PodCtl struct {
 func NewPodCtl() *PodCtl {
 	return &PodCtl{}
 }
+func(this *PodCtl) GetAll(c *gin.Context) goft.Json{
+	ns:=c.DefaultQuery("ns","default")
+	return gin.H{
+		"code":20000,
+		"data":this.PodService.ListByNs(ns),
+	}
 
-func (this *PodCtl) GetAll(c *gin.Context) goft.Json{
-	return this.PodService.ListByNs("default")
 }
-
-func (this *PodCtl)Build(goft *goft.Goft)  {
+func(this *PodCtl)  Build(goft *goft.Goft){
 	goft.Handle("GET","/pods",this.GetAll)
 }
 func(*PodCtl) Name() string{

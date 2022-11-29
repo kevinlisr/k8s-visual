@@ -22,10 +22,6 @@ func(this *UserCtl) login(c *gin.Context) goft.Json  {
 	}
 }
 
-//func(this *UserCtl) login(c *gin.Context) goft.Json  {
-//	return "200"
-//}
-
 func(this *UserCtl) logout(c *gin.Context)  goft.Json  {
 	return gin.H{
 		"code":20000,
@@ -46,4 +42,3 @@ func(this *UserCtl)  Build(goft *goft.Goft){
 func(*UserCtl) Name() string{
 	return "UserCtl"
 }
-

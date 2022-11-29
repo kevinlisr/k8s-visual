@@ -27,7 +27,7 @@ func(this *WsClient) ReadLoop(){
 	for{
 		t,data,err:=this.conn.ReadMessage()
 		if err!=nil{
-			this.conn.Close()
+			_=this.conn.Close()
 			ClientMap.Remove(this.conn)
 			this.closeChan<-1
 			break
